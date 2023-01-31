@@ -1,0 +1,2 @@
+Après une validation réussie, inclure un message de confirmation de la soumission réussie pour l'utilisateur 
+(ex. "Merci ! Votre réservation a été reçue.")
