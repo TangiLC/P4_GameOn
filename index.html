@@ -62,8 +62,9 @@
               action="index.html"
               method="post"
             >
-              <div
-                class="formData">
+              <div class="formData"
+                data-validation-type="name"
+                data-error="Nom trop court (2 caractères) ou caractères invalides.">
                 <label for="first">Prénom</label><br>
                 <input
                   class="text-control"
@@ -73,8 +74,9 @@
                   minlength="2"
                 /><br>
               </div>
-              <div
-                class="formData">
+              <div class="formData"
+                data-validation-type="name"
+                data-error="Nom trop court (2 caractères) ou caractères invalides.">
                 <label for="last">Nom</label><br>
                 <input
                   class="text-control"
@@ -83,8 +85,9 @@
                   name="last"
                 /><br>
               </div>
-              <div
-                class="formData">
+              <div class="formData"
+                data-validation-type="email"
+                data-error="Veuillez entrer une adresse email valide.">
                 <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
@@ -93,8 +96,9 @@
                   name="email"
                 /><br>
               </div>
-              <div
-                class="formData">
+              <div class="formData"
+                data-validation-type="birthdate"
+                data-error="Vous devez entrer votre date de naissance.">
                 <label for="birthdate">Date de naissance</label><br>
                 <input
                   class="text-control"
@@ -103,14 +107,17 @@
                   name="birthdate"
                 /><br>
               </div>
-              <div
-                class="formData">
+              <div class="formData"                
+                data-validation-type="number"
+                data-error="Veuillez entrer un nombre valide.">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                class="formData">
+                class="formData"                
+                data-validation-type="radioRequired"
+                data-error="Vous devez choisir une option.">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -180,7 +187,9 @@
               </div>
 
               <div
-                class="formData">
+                class="formData"                
+                data-validation-type="checkboxRequired"
+                data-error="Vous devez vérifier que vous acceptez les termes et conditions.">
                 <input
                   class="checkbox-input"
                   type="checkbox"
@@ -217,6 +226,6 @@
         Copyright 2014 - 2022, GameOn Inc.
       </p>
     </footer>
-    <script src="modal.js"></script>
+    <script src="modal2.js"></script>
   </body>
 </html>
