@@ -102,13 +102,15 @@
               <div
                 class="formData"
                 data-validation-type="birthdate"
-                data-error="Vous devez entrer votre date de naissance.">
+                data-error="Vous devez entrer une date de naissance valide.">
                 <label for="birthdate">Date de naissance</label><br>
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
+                  min="1900/01/01"
+                  max="2200/31/12"
                 /><br>
               </div>
               <div
