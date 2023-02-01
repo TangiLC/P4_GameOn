@@ -8,7 +8,9 @@ function editNav() {
 }
 
 // DOM Elements
+const submitBtn = document.querySelector(".btn-submit")
 const modalBg = document.querySelector(".bground")
+const modalContent = document.querySelector(".content")
 const modalBtn = document.querySelectorAll(".modal-btn")
 const closeModalBtn = document.getElementById("close-button")
 const form = document.querySelector("form")
@@ -23,20 +25,30 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal))
 // close modal event
 closeModalBtn.addEventListener("click", closeModal)
 
-// launch modal form
+// launch modal form : passe l'attribut display en "block" pour la classe <bground>
 function launchModal() {
   modalBg.style.display = "block"
+  modalBg.style.opacity = "1"
+
 }
 
-// close modal form
+// close modal form : modifie l'attribut display en "none" de la classe <bground>
 function closeModal() {
-  modalBg.style.opacity = "0"
-  modalBg.style.transform = "translateY(-150px)"
-  setTimeout(() => {
-    modalBg.style.display = "none"
-    modalBg.style.removeProperty("opacity")
-    modalBg.style.removeProperty("transform")
-  }, 800)
+  setTimeout(modalBg.style.display = "none",200);
+  setTimeout(modalBg.style.opacity = "0",200);
+}
+
+function resetModal(){
+  form.classList.remove("formSuccess");
+  document.getElementsByClassName("text-control").value="";
+  setTimeout(closeModal(),15);
+}
+
+function closevalidModal(){
+  modalContent.style.setProperty('-webkit-animation-name','modalclose');
+  modalContent.style.setProperty('animation-name','modalclose');
+  setTimeout(resetModal(),2000);
+  
 }
 
 // Regex
@@ -92,5 +104,5 @@ function validateWholeForm() {
 form.addEventListener("submit", (e) => {
   e.preventDefault()
   validateWholeForm() && form.classList.add("formSuccess") 
-  validateWholeForm() && setTimeout(closeModal,2000)
+  validateWholeForm() && setTimeout(closevalidModal,600)
 })
