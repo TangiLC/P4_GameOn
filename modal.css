@@ -36,7 +36,7 @@ img {
 }
 .header-logo {
   float: left;
-  width:250px;
+  width:auto;
   height:auto;
 }
 .main-navbar {
@@ -232,8 +232,8 @@ input {
   content: attr(data-error);
   font-size: 0.4em;
   color: #e54858;
-  /*display: block;*/
-  margin-top: 7px;
+  display: block;   /**********/
+  margin-top: 3px;
   margin-bottom: 7px;
   text-align: right;
   line-height: 0.3;
@@ -256,12 +256,16 @@ input {
   font-size: 12px;
   font-weight: normal;
 }
+
+.checkbox2-label{
+  margin-bottom: 20px;
+}
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
   /*display: block;*/
   width: 20px;
   height: 20px;
-  border: 2px solid #279e7a;
+  border: 1px solid white;
   border-radius: 50%;
   text-indent: 29px;
   white-space: nowrap;
@@ -273,8 +277,8 @@ input {
 .checkbox-label .checkbox-icon::after,
 .checkbox2-label .checkbox-icon::after {
   content: "";
-  width: 13px;
-  height: 13px;
+  width: 14px;
+  height: 14px;
   background-color: #279e7a;
   border-radius: 50%;
   text-indent: 29px;
@@ -484,11 +488,11 @@ input {
 }
 .hero-headline {
   font-size: 6rem;
-  font-weight: normal;
+  font-weight: 900;
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
+  width: 130%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
@@ -546,8 +550,8 @@ footer {
     white-space: normal;
   }
   .hero-text {
-    width: unset;
-    font-size: 1.5rem;
+    width: 105%;
+    font-size: 1.2rem;
   }
   .hero-img img {
     border-radius: 10px;
