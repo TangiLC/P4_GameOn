@@ -14,7 +14,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
+  background-image: url("controller.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -161,6 +161,7 @@ main {
 
 .bground {
   display: none;
+  /*visibility:hidden;*/
   position: fixed;
   z-index: 1;
   left: 0;
@@ -198,6 +199,12 @@ main {
   margin: 15px auto;
 }
 
+/*class hidden on valid form
+.toHide{
+  visibility:visible;
+  
+}*/
+
 label {
   font-family: var(--font-default);
   font-size: 17px;
@@ -222,7 +229,7 @@ input {
   content: attr(data-error);
   font-size: 0.4em;
   color: #e54858;
-  display: block;
+  /*display: block;*/
   margin-top: 7px;
   margin-bottom: 7px;
   text-align: right;
@@ -236,7 +243,9 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-
+.formData[data-error-visible="true"] .checkbox-icon {
+  border: 2px solid #e54858;
+}
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -246,7 +255,7 @@ input {
 }
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
-  display: block;
+  /*display: block;*/
   width: 20px;
   height: 20px;
   border: 2px solid #279e7a;
@@ -284,9 +293,7 @@ input {
 .checkbox-input:checked + .checkbox2-label .checkbox-icon {
   background: #279e7a;
 }
-.formData[data-error-visible="true"] .checkbox-icon {
-  border: 2px solid #e54858;
-}
+
 .checkbox2-label .checkbox-icon {
   border-radius: 4px;
   border: 0;
@@ -332,12 +339,23 @@ input {
 .btn-submit,
 .btn-signup {
   background: #fe142f;
+  color: #fff;
   display: block;
   margin: 0 auto;
   border-radius: 7px;
   font-size: 1rem;
   padding: 12px 82px;
+  cursor: pointer;
+  border: 0;
+}
+.btn-close {
+  background: #279e7a;
   color: #fff;
+  display: none;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
   cursor: pointer;
   border: 0;
 }
@@ -346,14 +364,17 @@ input {
   text-align: center;
   color: #279e7a;
   display: none;
+  padding-top: 300px;
+  padding-bottom: 300px;
 }
 
 .formSuccess .btn-submit {
   display: none;
+  
 }
 .formSuccess .formSuccessMessage {
   display: block;
-  /*animation:modalclose ;*/
+
 }
 /* custom select styles */
 .custom-select {
@@ -410,11 +431,6 @@ input {
   left: 0;
   right: 0;
   z-index: 99;
-}
-
-/* Hide the items when the select box is closed: */
-.select-hide {
-  display: none;
 }
 
 .select-items div:hover,
@@ -512,7 +528,7 @@ footer {
     box-shadow: unset;
   }
   .hero-content {
-    background: #fff;
+    background: transparent;
     color: #000;
     padding: 20px;
   }
@@ -546,22 +562,13 @@ footer {
 }
 
 @-webkit-keyframes modalopen {
-  0% {opacity: 0; transform: scale(.4) translateY(-50px);  }
-  96% {transform: scale(1.1)}
-  100% {transform: scale(1) translateY(-150px); opacity: 1; }
+  0% {opacity: 0; transform: scale(.4);  }
+  90% {opacity: 1; transform: scale(1.02) translateY(-152px);}
+  100% {opacity: 1; transform: scale(1) translateY(-150px); }
 }
 
 @keyframes modalopen {
-  0% {opacity: 0; transform: scale(.4) translateY(-50px);  }
-  96% {transform: scale(1.1)}
-  100% {transform: scale(1) translateY(-150px); opacity: 1;}
-}
-
-@keyframes modalclose {
-  0% {opacity : 1; transform: scale(1) rotate(0deg);}
-  100%{opacity : 0; transform: scale(.2) rotate(-360deg);}
-}
-@-webkit-keyframes modalclose {
-  0% {opacity : 1; transform: scale(1) rotate(0deg);}
-  100%{opacity : 0; transform: scale(.2) rotate(-360deg);}
+  0% {opacity: 0; transform: scale(.4);  }
+  90% {opacity: 1; transform: scale(1.02) translateY(-152px);}
+  100% {opacity: 1; transform: scale(1) translateY(-150px);}
 }

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>-
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -55,15 +55,15 @@
       <div class="bground">
         <div class="content">
           <span class="close" id="close-button"></span>
-          <div class="modal-body">
+          <div class="modal-body">    
             <form
               id="form"
               name="reserve"
-              action="index.html"
+              action=""
               method="post"
             >
               <div
-                class="formData"
+                class="formData toHide"
                 data-validation-type="name"
                 data-error="Nom trop court (2 caractères) ou caractères invalides.">
                 <label for="first">Prénom</label><br>
@@ -76,7 +76,7 @@
                 /><br>
               </div>
               <div
-                class="formData"
+                class="formData toHide"
                 data-validation-type="name"
                 data-error="Nom trop court (2 caractères) ou caractères invalides.">
                 <label for="last">Nom</label><br>
@@ -88,7 +88,7 @@
                 /><br>
               </div>
               <div
-                class="formData"
+                class="formData toHide"
                 data-validation-type="email"
                 data-error="Veuillez entrer une adresse email valide.">
                 <label for="email">E-mail</label><br>
@@ -100,7 +100,7 @@
                 /><br>
               </div>
               <div
-                class="formData"
+                class="formData toHide"
                 data-validation-type="birthdate"
                 data-error="Vous devez entrer une date de naissance valide.">
                 <label for="birthdate">Date de naissance</label><br>
@@ -114,15 +114,16 @@
                 /><br>
               </div>
               <div
-                class="formData"                
+                class="formData toHide"                
                 data-validation-type="number"
                 data-error="Veuillez entrer un nombre valide.">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
-              <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
+              <p class="formSuccessMessage">Merci pour votre inscription.</p>
+              <p class="text-label toHide">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                class="formData"                
+                class="formData toHide"                
                 data-validation-type="radioRequired"
                 data-error="Vous devez choisir une option.">
                 <input
@@ -194,7 +195,7 @@
               </div>
 
               <div
-                class="formData"                
+                class="formData toHide"                
                 data-validation-type="checkboxRequired"
                 data-error="Vous devez vérifier que vous acceptez les termes et conditions.">
                 <input
@@ -208,7 +209,7 @@
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
               </div>
-              <div class="formdata">
+              <div class="formdata toHide">
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
@@ -222,8 +223,15 @@
                 class="button"
                 value="C'est parti"
               />
-              <p class="formSuccessMessage">Merci&nbsp;! Votre réservation a bien été reçue.</p>
+              <input
+                class="btn-close"
+                type="reset"
+                class="button"
+                id="btn-close"
+                value="Fermer"
+              />
             </form>
+            
           </div>
         </div>
       </div>
