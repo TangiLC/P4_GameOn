@@ -36,6 +36,8 @@ img {
 }
 .header-logo {
   float: left;
+  width:250px;
+  height:auto;
 }
 .main-navbar {
   float: right;
@@ -76,9 +78,6 @@ img {
     float: right;
     display: block;
   }
-}
-
-@media screen and (max-width: 768px) {
   .topnav.responsive {
     position: relative;
   }
@@ -91,6 +90,10 @@ img {
     float: none;
     display: block;
     text-align: left;
+  }
+
+  .header-logo{
+    width:110px;
   }
 }
 
