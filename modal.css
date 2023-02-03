@@ -379,11 +379,21 @@ input {
 
 .formSuccess .btn-submit {
   display: none;
-  
 }
+
 .formSuccess .formSuccessMessage {
   display: block;
+}
 
+.formFail .btn-submit {
+  animation: shake .15s 0s 3;
+}
+
+@keyframes shake {
+  0%{transform:translateX(0);}
+  25%{transform:translateX(-20px);}
+  75%{transform:translateX(20px);}
+  100%{transform:translateX(0);}
 }
 /* custom select styles */
 .custom-select {

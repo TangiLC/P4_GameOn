@@ -8,10 +8,10 @@ function editNav() {
 }
 
 // DOM Elements
-const submitBtn = document.querySelector(".btn-submit")
+const submitBtn = document.querySelector(".btn-submit")   
 const closeBtn = document.querySelector(".btn-close")
 const limitBirthday =document.getElementById("birthdate")
-const toHide =document.querySelectorAll(".toHide")   //query les éléments à cacher
+const toHide =document.querySelectorAll(".toHide")   
 const success =document.querySelectorAll(".formSuccessMessage")
 const modalBg = document.querySelector(".bground")
 const modalContent = document.querySelector(".content")
@@ -29,12 +29,12 @@ function twoDigits(nb){
 }
 const todayMonth = twoDigits(today.getMonth()+1);
 const todayDay = twoDigits(today.getDate());
-const today_5y = ((today.getYear()+(2000-106))+'-'+todayMonth+'-'+todayDay);
+const today_6y = ((today.getYear()+(1900-06))+'-'+todayMonth+'-'+todayDay);
 const today_100y =((today.getYear()+(1900-100))+'-'+todayMonth+'-'+todayDay);
-const jour_5y =(todayDay+'/'+todayMonth+'/'+(today.getYear()+(2000-106)));
+const jour_6y =(todayDay+'/'+todayMonth+'/'+(today.getYear()+(1900-06)));
 const jour_100y =(todayDay+'/'+todayMonth+'/'+(today.getYear()+(1900-100)));
 limitBirthday.setAttribute('min', today_100y);
-limitBirthday.setAttribute('max', today_5y);
+limitBirthday.setAttribute('max', today_6y);
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -56,13 +56,15 @@ function closeModal() {
   setTimeout(modalBg.style.opacity = '0',800);
 }
 
+// Reset form and close modal : vide les champs input du formulaire avant fermeture
 function resetCloseModal(){
-  //form.classList.remove("formSuccess");
-  form.reset();
+  setTimeout(form.reset(),2000);
+  location.reload();
   closeModal();
 }
 
-function closevalidModal(){
+// Close Valid Modal : masquage des champs "toHide" et apparition du bouton close
+function closeValidModal(){
   toHide.forEach((arg) => {
     arg.style.display='none';
     arg.style.visibility='hidden';
@@ -75,17 +77,17 @@ function closevalidModal(){
   
 }
 
-// Regex
+// Regex pour les tests input
 let validName = /^[A-Za-zÀ-ÖØ-öø-ÿ '-]{2,}$/;
 let validEmail = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
 let validNb = /^[0-9]{1,}$/;
 
 
-
+// Validation unitaire booléen de l'array element(input)/attribut (value) comparaison avec le regex
 const validate = {
   name: ({ value }) => validName.test(value),
   email: ({ value }) => validEmail.test(value.toLowerCase()),
-  birthdate: ({ value }) => ((new Date(value)<new Date(jour_5y)) && (new Date(value)>new Date(jour_100y))),
+  birthdate: ({ value }) => ((new Date(value)<new Date(jour_6y)) && (new Date(value)>new Date(jour_100y))),
   number: ({ value }) => validNb.test(value),
   radioRequired: ({ elem }) =>
     elem.querySelectorAll('input[type="radio"]:checked').length > 0,
@@ -93,6 +95,7 @@ const validate = {
     elem.querySelector('input[type="checkbox"]').checked,
 }
 
+//fonction de validation en arrière plan avec affichage du message d'erreur si invalide
 formDataToValidate.forEach((elem) => {
   elem.querySelectorAll("input").forEach((input) => {
     input.addEventListener("input", (e) => {
@@ -106,6 +109,7 @@ formDataToValidate.forEach((elem) => {
   })
 })
 
+//Validation finale de l'ensemble du formulaire au clique submit
 function validateWholeForm() {
   formDataToValidate.forEach((elem) => {
     elem.querySelectorAll("input").forEach((input) => {
@@ -122,13 +126,28 @@ function validateWholeForm() {
       elem.getAttribute("data-error-visible") === "false" ||
       !elem.hasAttribute("data-error-visible")
   )
-
   return isFormValid
 }
 
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function formFail(){
+  form.classList.toggle("formFail");
+  await delay(2000);
+  form.classList.toggle("formFail");
+}
+// fonction au submit : conserver les input et lancer la validation,
+// afficher le message formsuccess et boutton fermer si validation true
+// lancer l'animation formfail puis restaurer l'état antérieur si validation false
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  validateWholeForm() && form.classList.add("formSuccess") ;
-  validateWholeForm() && setTimeout(closevalidModal,200);
+  if(validateWholeForm()){
+    form.classList.add("formSuccess");
+    setTimeout(closeValidModal,200);
+  } else {
+    formFail();
+  }
 })
-
