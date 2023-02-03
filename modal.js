@@ -129,11 +129,11 @@ function validateWholeForm() {
   return isFormValid
 }
 
-
+//fonction d'attente
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
-
+// lancer l'animation css formfail contenue dans la class puis restauration à l'état antérieur
 async function formFail(){
   form.classList.toggle("formFail");
   await delay(2000);
@@ -141,7 +141,7 @@ async function formFail(){
 }
 // fonction au submit : conserver les input et lancer la validation,
 // afficher le message formsuccess et boutton fermer si validation true
-// lancer l'animation formfail puis restaurer l'état antérieur si validation false
+// lancer formfail si validation false
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   if(validateWholeForm()){

@@ -29,7 +29,7 @@ p {
 img {
   padding-right: 1rem;
 }
-
+/* éléments de la barre de navigation **************/
 .topnav {
   overflow: hidden;
   margin: 3.5%;
@@ -71,7 +71,7 @@ img {
 .topnav .icon {
   display: none;
 }
-
+/* modif elements barre de navigation responsive pour mobile ********/
 @media screen and (max-width: 768px) {
   .topnav a {
     display: none;
@@ -98,7 +98,7 @@ img {
     width:110px;
   }
 }
-
+/* modif elements barre de navigation responsive pour XSmobile ********/
 @media screen and (max-width: 540px) {
   .topnav a {
     display: none;
@@ -110,6 +110,7 @@ img {
   }
 }
 
+/* règles de l'élément main *****************/
 main {
   font-size: 130%;
   font-weight: bolder;
@@ -122,6 +123,7 @@ main {
   text-align: justify;
 }
 
+/* règles pour le bouton d'inscription /apparition du formulaire ******/
 .modal-btn {
   font-size: 145%;
   background: #fe142f;
@@ -144,7 +146,7 @@ main {
   font-family: var(--font-slab);
 }
 
-/* Modal form */
+/* éléments du formulaire *****************************/
 
 .button {
   background: #fe142f;
@@ -166,7 +168,6 @@ main {
 
 .bground {
   display: none;
-  /*visibility:hidden;*/
   position: fixed;
   z-index: 1;
   left: 0;
@@ -194,11 +195,6 @@ main {
   padding-top: 10px;
 }
 
-.contentClose{
-  -webkit-animation:1s modalclose ;
-  animation:1s modalclose ;
-}
-
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
@@ -207,7 +203,6 @@ main {
 /*class hidden on valid form
 .toHide{
   visibility:visible;
-  
 }*/
 
 label {
@@ -230,11 +225,11 @@ input {
   font-size: 20px;
   height: 48px;
 }
-.formData[data-error]::after {
+.formData[data-error]::after {   /*positionnement message d'erreur selon input***/
   content: attr(data-error);
   font-size: 0.4em;
   color: #e54858;
-  display: block;   /**********/
+  display: block;   
   margin-top: 3px;
   margin-bottom: 7px;
   text-align: right;
@@ -249,7 +244,7 @@ input {
   border: 2px solid #e54858;
 }
 .formData[data-error-visible="true"] .checkbox-icon {
-  border: 2px solid #e54858;
+  border: 2px solid #F64040;
 }
 .checkbox-label,
 .checkbox2-label {
@@ -262,9 +257,9 @@ input {
 .checkbox2-label{
   margin-bottom: 20px;
 }
-.checkbox-label .checkbox-icon,
+.checkbox-label .checkbox-icon,     /*attributs des checkbox*****/
 .checkbox2-label .checkbox-icon {
-  /*display: block;*/
+  /*display: block;*/ 
   width: 20px;
   height: 20px;
   border: 1px solid white;
@@ -320,7 +315,7 @@ input {
   left: 21%;
   top: 19%;
 }
-.close {
+.close {               /*élément X en haut à droite pour fermer*****/
   position: absolute;
   right: 15px;
   top: 15px;
@@ -346,7 +341,7 @@ input {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup {      /*bouton de validation du formulaire d'inscription*******/
   background: #fe142f;
   color: #fff;
   display: block;
@@ -357,7 +352,7 @@ input {
   cursor: pointer;
   border: 0;
 }
-.btn-close {
+.btn-close {         /*bouton invisible apparition à la validation du formulaire****/
   background: #279e7a;
   color: #fff;
   display: none;
@@ -369,27 +364,33 @@ input {
   border: 0;
 }
 
-.formSuccessMessage {
+.formSuccessMessage {   /*message invisible apparition à la validation du formulaire**/
   text-align: center;
   color: #279e7a;
   display: none;
-  padding-top: 300px;
-  padding-bottom: 300px;
-}
-
-.formSuccess .btn-submit {
-  display: none;
+  padding-top: 250px;
+  padding-bottom: 250px;
 }
 
 .formSuccess .formSuccessMessage {
   display: block;
 }
 
-.formFail .btn-submit {
+.formSuccess .btn-submit {     /*disparition du bouton si formulaire valide********/
+  display: none;
+}
+
+.formFail .btn-submit {        /*lancement de l'animation hochement négatif si formulaire invalide*/
   animation: shake .15s 0s 3;
 }
 
 @keyframes shake {
+  0%{transform:translateX(0);}
+  25%{transform:translateX(-20px);}
+  75%{transform:translateX(20px);}
+  100%{transform:translateX(0);}
+}
+@-webkit-keyframes shake {
   0%{transform:translateX(0);}
   25%{transform:translateX(-20px);}
   75%{transform:translateX(20px);}
@@ -403,7 +404,7 @@ input {
   font-weight: normal;
 }
 
-.custom-select select {
+.custom-select select {         /*modifications du pointeur ************/
   display: none;
 }
 .select-selected {
@@ -452,6 +453,11 @@ input {
   z-index: 99;
 }
 
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
 .select-items div:hover,
 .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
@@ -461,7 +467,7 @@ input {
   font-weight: normal;
   font-size: 16px;
 }
-.hero-section {
+.hero-section {                        /*mise en page grid de la page*/
   min-height: 70vh;
   border-radius: 10px;
   display: grid;
@@ -470,7 +476,7 @@ input {
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
 }
-.hero-content {
+.hero-content {                       /*attributs des colonnes de gauche**/
   padding: 51px 67px;
   grid-column: span 4;
   background: #232323;
@@ -479,7 +485,7 @@ input {
   text-align: left;
   min-width: 424px;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 540px) {
   .hero-content {
     min-width: unset;
   }
@@ -498,12 +504,12 @@ input {
   position: relative;
   z-index: 1;
 }
-.hero-headline {
+.hero-headline {              /*titre H1 de la page****/
   font-size: 6rem;
   font-weight: 900;
   white-space: nowrap;
 }
-.hero-text {
+.hero-text {                   /*contenu de la colonne gauche*****/
   width: 130%;
   font-weight: normal;
   margin-top: 57px;
@@ -517,7 +523,7 @@ input {
   margin: 0;
   margin-top: 59px;
 }
-.hero-img {
+.hero-img {                   /*illustration colonne droite**/
   grid-column: span 8;
 }
 .hero-img img {
