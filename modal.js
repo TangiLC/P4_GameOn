@@ -114,8 +114,7 @@ function validateWholeForm() {
   formDataToValidate.forEach((elem) => {
     elem.querySelectorAll("input").forEach((input) => {
       const isValid = validate[elem.getAttribute("data-validation-type")]({
-        value: input.value,
-        elem,
+        value: input.value, elem,
       })
       elem.setAttribute("data-error-visible", !isValid)
     })

@@ -225,6 +225,11 @@ input {
   font-size: 20px;
   height: 48px;
 }
+
+.lowCase{
+  text-transform: lowercase;
+}
+
 .formData[data-error]::after {   /*positionnement message d'erreur selon input***/
   content: attr(data-error);
   font-size: 0.4em;
