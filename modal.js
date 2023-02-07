@@ -27,14 +27,16 @@ const today = new Date();
 function twoDigits(nb){
   return ((nb<10) ? ('0'+nb.toString()) : (nb.toString()));
 }
+let age_mini =6;
+let age_maxi =100;
 const todayMonth = twoDigits(today.getMonth()+1);
 const todayDay = twoDigits(today.getDate());
-const today_6y = ((today.getYear()+(1900-06))+'-'+todayMonth+'-'+todayDay);
-const today_100y =((today.getYear()+(1900-100))+'-'+todayMonth+'-'+todayDay);
-const jour_6y =(todayDay+'/'+todayMonth+'/'+(today.getYear()+(1900-06)));
-const jour_100y =(todayDay+'/'+todayMonth+'/'+(today.getYear()+(1900-100)));
-limitBirthday.setAttribute('min', today_100y);
-limitBirthday.setAttribute('max', today_6y);
+const today_max = ((today.getYear()+(1900-age_mini))+'-'+todayMonth+'-'+todayDay);
+const today_min =((today.getYear()+(1900-age_maxi))+'-'+todayMonth+'-'+todayDay);
+const jour_max =(todayDay+'/'+todayMonth+'/'+(today.getYear()+(1900-age_mini)));
+const jour_min =(todayDay+'/'+todayMonth+'/'+(today.getYear()+(1900-age_maxi)));
+limitBirthday.setAttribute('min', today_min);
+limitBirthday.setAttribute('max', today_max);
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -87,7 +89,7 @@ let validNb = /^[0-9]{1,}$/;
 const validate = {
   name: ({ value }) => validName.test(value),
   email: ({ value }) => validEmail.test(value.toLowerCase()),
-  birthdate: ({ value }) => ((new Date(value)<new Date(jour_6y)) && (new Date(value)>new Date(jour_100y))),
+  birthdate: ({ value }) => ((new Date(value)<new Date(jour_max)) && (new Date(value)>new Date(jour_min))),
   number: ({ value }) => validNb.test(value),
   radioRequired: ({ elem }) =>
     elem.querySelectorAll('input[type="radio"]:checked').length > 0,
