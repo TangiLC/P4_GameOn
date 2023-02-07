@@ -208,10 +208,10 @@ input {
 
 .formData[data-error]::after {   /*positionnement message d'erreur selon input***/
   content: attr(data-error);
-  font-size: 0.4em;
+  font-size: 0.5em;
   color: #e54858;
   display: block;   
-  margin-top: 3px;
+  margin-top: -9px;
   margin-bottom: 7px;
   text-align: right;
   line-height: 0.3;
