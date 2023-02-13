@@ -38,6 +38,7 @@ const jour_min =(todayDay+'/'+todayMonth+'/'+(today.getYear()+(1900-age_maxi)));
 limitBirthday.setAttribute('min', today_min);
 limitBirthday.setAttribute('max', today_max);
 
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -81,7 +82,7 @@ function closeValidModal(){
 
 // Regex pour les tests input
 let validName = /^[A-Za-zÀ-ÖØ-öø-ÿ '-]{2,}$/;
-let validEmail = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+let validEmail = /^[a-z0-9._-]+@[a-z0-9]{1,}[a-z0-9.-]{1,62}\.[a-z]{2,4}$/;
 let validNb = /^[0-9]{1,}$/;
 
 
@@ -89,7 +90,7 @@ let validNb = /^[0-9]{1,}$/;
 const validate = {
   name: ({ value }) => validName.test(value),
   email: ({ value }) => validEmail.test(value.toLowerCase()),
-  birthdate: ({ value }) => ((new Date(value)<new Date(jour_max)) && (new Date(value)>new Date(jour_min))),
+  birthdate: ({ value }) => ((new Date(value)<new Date('2017-12-31')) && (new Date(value)>new Date('1920-01-01'))),
   number: ({ value }) => validNb.test(value),
   radioRequired: ({ elem }) =>
     elem.querySelectorAll('input[type="radio"]:checked').length > 0,
